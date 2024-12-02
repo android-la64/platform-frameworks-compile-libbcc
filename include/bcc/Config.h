@@ -30,6 +30,11 @@
   #define PROVIDE_ARM64_CODEGEN 1
   #define DEFAULT_ARM64_CODEGEN 1
 
+#elif defined(FORCE_LOONGARCH64_CODEGEN)
+  #define PROVIDE_LOONGARCH_CODEGEN 1
+  #define PROVIDE_LOONGARCH64_CODEGEN 1
+  #define DEFAULT_LOONGARCH64_CODEGEN 1
+
 #elif defined(FORCE_MIPS_CODEGEN)
   #define PROVIDE_MIPS_CODEGEN 1
   #define DEFAULT_MIPS_CODEGEN 1
@@ -55,6 +60,7 @@
   #define PROVIDE_MIPS64_CODEGEN 1
   #define PROVIDE_X86_CODEGEN 1
   #define PROVIDE_X86_64_CODEGEN 1
+  #define PROVIDE_LOONGARCH64_CODEGEN 1
 
   #if defined(__arm__)
     #define DEFAULT_ARM_CODEGEN 1
@@ -70,6 +76,8 @@
     #define DEFAULT_X86_CODEGEN 1
   #elif defined(__x86_64__)
     #define DEFAULT_X86_64_CODEGEN 1
+  #elif defined(__loongarch64)
+    #define DEFAULT_LOONGARCH64_CODEGEN 1 
   #endif
 #endif
 
@@ -80,6 +88,7 @@
 #define DEFAULT_MIPS64_TRIPLE_STRING   "mips64el-none-linux-gnueabi"
 #define DEFAULT_X86_TRIPLE_STRING      "i686-unknown-linux"
 #define DEFAULT_X86_64_TRIPLE_STRING   "x86_64-unknown-linux"
+#define DEFAULT_LOONGARCH64_TRIPLE_STRING   "loongarch64-unknown-linux"
 
 // Custom DataLayout string for X86 with i64 and f64 set to match the ARM32
 // alignment requirement of 64-bits.
@@ -100,6 +109,8 @@
   #define DEFAULT_TARGET_TRIPLE_STRING DEFAULT_X86_TRIPLE_STRING
 #elif defined(DEFAULT_X86_64_CODEGEN)
   #define DEFAULT_TARGET_TRIPLE_STRING DEFAULT_X86_64_TRIPLE_STRING
+#elif defined(DEFAULT_LOONGARCH64_CODEGEN)
+  #define DEFAULT_TARGET_TRIPLE_STRING DEFAULT_LOONGARCH64_TRIPLE_STRING
 #endif
 
 #if (defined(__VFP_FP__) && !defined(__SOFTFP__))

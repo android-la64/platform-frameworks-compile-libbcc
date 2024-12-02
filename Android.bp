@@ -115,6 +115,12 @@ cc_defaults {
                 "-DARCH_ARM_HAVE_VFP_D32",
                 "-DDISABLE_CLCORE_NEON",
             ],
+        }, 
+        loongarch64: {
+            cflags: [
+                "-DFORCE_LOONGARCH64_CODEGEN",
+            ],
+        },
     },
     target: {
         android_x86: {
